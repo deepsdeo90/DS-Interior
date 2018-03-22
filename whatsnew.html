@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+	<!-- controls the page's dimention -->   
+    <meta name="viewport" content="width=device-width">
+
+	<title>DS Interior Inc.</title>
+
+	<!-- bootratp cdn-->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- font awsome-->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Open+Sans|PT+Serif" rel="stylesheet">
+
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<style type="text/css">
+   footer{
+        /*position: fixed;
+    width: 100%;
+    bottom: 0;*/
+   } 
+   .minheight{
+      height: 900px;
+
+   }
+  </style>
+</head>
+<body>
+	<!-- ==============================navigation :starts =============================================== -->	
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand logo" href="#">DS Interior, INC. </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+         <li ><a  href="index.html">Home</a></li>
+        <li class="active"><a  href="whatsnew.html">What's New</a></li>
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Work <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="projects.html">Projects</a></li>
+             <li><a href="catalog.html">Explore By Room</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Service <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="services.html">Customer Service</a></li>
+            <li><a href="faqs.html">Faqs</a></li>
+          </ul>
+        </li>
+       
+         <li><a href="order.html">Order</a></li>
+      
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="contact-us.html">Contact Us</a></li>
+            <li><a href="employment.html">Employment</a></li>
+              <li><a href="about-us.html">About Us</a></li>
+      
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- ==============================navigation :end =============================================== -->
+<!-- =====================Recent Projects ============= -->
+<div class="container top">
+	<h2 class="heading">What's New</h2>
+	<div class='row container minheight' id="insertDiv"  >
+    
+  </div>
+</div>
+
+	<script type="text/javascript">
+	<!-- HIDE FROM OTHER BROWSERS
+
+
+  /*Create an id with a stlye: font size, weight, color; width, height, align text center, background color, position absolute with top and left.*/
+  var myDiv = document.createElement("div");
+      myDiv.setAttribute("id", "myDiv");
+      myDiv.style.backgroundColor = " #d9edf7";
+      myDiv.style.fontSize= "24px";
+      myDiv.style.fontWeight= "bold";
+      myDiv.style.color="#333";
+      myDiv.style.width= "500px";
+      myDiv.style.height= "400px";
+      myDiv.style.textAlign= "center";
+      myDiv.style.position= "absolute";
+      myDiv.style.top="160px";
+      myDiv.style.left="100px";
+
+  /*In the body, include a div with the created id to display the message with an image of the product*/
+  myDiv.innerHTML="<h3>Sustainable Kitchen</h3>";
+  myDiv.innerHTML += "<img src='img/kitchen.jpg' alt='' width='420' height='320' >";
+  var insertDiv = document.getElementById("insertDiv");
+
+  insertDiv.appendChild(myDiv);
+
+  /*Upon loading the page, fire a function to do the following:*/
+  var EventUtil = {
+
+    addHandler: function(element, type, handler){
+        if (element.addEventListener){
+            element.addEventListener(type, handler, false);
+        } else if (element.attachEvent){
+            element.attachEvent("on" + type, handler);
+        } else {
+            element["on" + type] = handler;
+        }
+    },
+     getEvent: function(event){
+        return event ? event : window.event;
+    },
+}
+
+EventUtil.addHandler(window, "load", function(event){
+/*    When the user clicks on any position on the page, the entire box containing the text and image moves to that position and stays there until the users clicks again somewhere on the page and then it moves again.*/
+
+  /*Use the Client coordinates to get the clientX and clientY.*/
+  var insertDiv = document.getElementById("insertDiv");
+  EventUtil.addHandler(insertDiv, "click", function(event){
+            event = EventUtil.getEvent(event);
+            var pageX = event.pageX,
+                pageY = event.pageY;
+
+
+                clientX =event.clientX;
+                clientY = event.clientY;
+
+                //offsetX = 0;
+                //offsetY = 0;
+
+            if (pageX === undefined){
+                pageX = clientX + (document.body.scrollLeft ||
+                document.documentElement.scrollLeft);
+            }
+
+            if (pageY === undefined){
+                pageY = clientY + (document.body.scrollTop ||
+                document.documentElement.scrollTop);
+            }
+				
+            //Use the Page coordinates to get the pageX and pageY. So they are the offsets from the Client coordinates. You then have the top and left values.
+            //Now you can create a new style for the top and left values (update the current ones).
+            myDiv = document.getElementById("myDiv");
+            
+            //var divWidth = myDiv.offsetWidth
+            //var divHeight = myDiv.offsetHeight
+            //alert(divWidth);
+            //pageX -= divWidth/2;
+            //pageY -= divHeight/2;
+
+            myDiv.style.top=pageY+"px";
+            myDiv.style.left=pageX+"px";
+            //Get the id of that div (box). Set the attributes for style. It's done. The box moves to that new left and top position.
+           // insertDiv.appendChild(myDiv);
+
+
+        });
+});      
+// STOP HIDING FROM OTHER BROWSERS -->
+  </script>
+  
+<footer class=" text-center">
+<div class="container">
+ <span style="float:left">Website Developed by Dipali</span>  
+  <span style="float:right">
+  	<i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i>
+  	<i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
+<i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
+
+
+  </span>	
+</div>
+ 
+</footer>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>

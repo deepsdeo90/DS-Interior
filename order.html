@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+	<!-- controls the page's dimention -->   
+    <meta name="viewport" content="width=device-width">
+  
+	<title>DS Interior Inc.</title>
+
+	<!-- bootratp cdn-->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- font awsome-->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Open+Sans|PT+Serif" rel="stylesheet">
+
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript">
+   function validate(form){
+  /*First Name (name=first): check for non blank and nonzero length.*/
+  var valid =true;
+  var firstName = form.first;
+  var lastName = form.last;
+  var address = form.address;
+  var city = form.city;
+  var state = form.state;
+  var zip = form.zip;
+  var phone = form.phone;
+  var email = form.email;
+  var ccnum = form.ccnum;
+  var cctype = form.cctype;
+  var ccexpire = form.ccexpire;
+  var comment = form.comment;
+  
+  if(!firstName.value.trim() || firstName.value.trim().length==0){ 
+    alert("Please enter first name");
+    firstName.focus();
+    firstName.select();
+    valid=false;
+    return false;
+  }
+  if(!lastName.value.trim() || lastName.value.trim().length==0){
+    alert("Please enter last name");
+    lastName.focus();
+    lastName.select();
+    valid=false;
+    return false;
+  }
+  if(!address.value.trim() || address.value.trim().length==0){
+    alert("Please enter address");
+    address.focus();
+    address.select();
+    valid=false;
+    return false;
+  }
+  if(!city.value.trim() || city.value.trim().length==0){
+    alert("Please enter city");
+    city.focus();
+    city.select();
+    valid=false;
+    return false;
+  }
+  if(!state.value.trim()|| state.value.trim().length==0){
+    alert("Please enter state");
+    state.focus();
+    state.select();
+    valid=false;
+    return false;
+  }if(!zip.value.trim()|| zip.value.trim().length==0){
+    alert("Please enter zip");
+    zip.focus();
+    zip.select();
+    valid=false;
+    return false;
+  }
+  if(!validateZip(zip.value.trim())){
+    alert("Please enter either 5 digits or 9 digits zip code.");
+    zip.focus();
+    zip.select();
+    valid=false;
+    return false;
+  }if(!phone.value.trim()|| phone.value.trim().length==0){
+    alert("Please enter phone number");
+    phone.focus();
+    phone.select();
+    valid=false;
+    return false;
+  }
+  if(!validatePhone(phone.value.trim())){
+    alert("Please enter valid format (xxx) xxx-xxxx.");
+    phone.focus();
+    phone.select();
+    valid=false;
+    return false;
+  }if(!email.value.trim()|| email.value.trim().length==0){
+    alert("Please enter email");
+    email.focus();
+    email.select();
+    valid=false;
+    return false;
+  }if(!ccnum.value.trim()|| ccnum.value.trim().length==0){
+    alert("Please enter credit card number");
+    ccnum.focus();
+    ccnum.select();
+    valid=false;
+    return false;
+  }
+  if(!validateCcnum(ccnum.value.trim())){
+    alert("Please enter 16 digit number");
+    ccnum.focus();
+    ccnum.select();
+    valid=false;
+    return false;
+  }if(!cctype.value || cctype.value.length==0){
+    alert("Please select credit card type");
+    cctype.focus();
+    //cctype.select();
+    valid=false;
+    return false;
+  }if(!ccexpire.value.trim() || ccexpire.value.trim().length==0){
+    alert("Please enter credit expiration date");
+    ccexpire.focus();
+    ccexpire.select();
+    valid=false;
+    return false;
+  }
+  if(!validateExpirationDate(ccexpire.value.trim())){
+    alert("Please enter valid expiration date mm/yyyy");
+    ccexpire.focus();
+    ccexpire.select();
+    valid=false;
+    return false;
+  }if(!comment.value.trim() || comment.value.trim().length==0){
+    alert("Please enter comment");
+    comment.focus();
+    comment.select();
+    valid=false;
+    return false;
+  }
+  if(valid)
+    return true;
+  else
+    return false;
+}
+function validateZip(zip){
+  var pattern = /(^\d{5}$)|(^\d{9}$)/;
+  return pattern.test(zip);
+}
+function validatePhone(phone){
+  var pattern =  /^[(]{1}[0-9]{3}[)]{1}[\s]{1}[0-9]{3}[-]{1}[0-9]{4}$/;
+  return pattern.test(phone);
+}
+function validateCcnum(ccnum){
+  var pattern = /^\d{16}$/;
+  return pattern.test(ccnum);
+}
+function validateExpirationDate(ccexpire){
+  var pattern = /^(0[1-9]|1[0-2])\/?([0-9]{4})$/;
+  if(pattern.test(ccexpire)){
+    //alert("true");
+  
+    var parts = ccexpire.split("/");
+    var today, ccexpireDate;
+    var ccexpireMonth=parseInt(parts[0], 10);;
+    var ccexpireYear=parseInt(parts[1], 10);;
+    today = new Date();
+    ccexpireDate = new Date();
+    ccexpireDate.setFullYear(ccexpireYear, ccexpireMonth, 1);
+    if(ccexpireDate<today){
+      //alert("wrong date");
+      return false;
+    }else{
+      return true;
+    }
+  }else{
+    return false; 
+  }
+  
+}
+function update()
+{
+  var price11 = document.getElementById("inputunitprice11").innerHTML;
+    price11 = price11.substring(1);
+    price11 = parseFloat(price11);  
+
+  var qnty11 = parseFloat(document.getElementById("inputqnty11").value);
+    qnty11 = isNaN(qnty11)?0:qnty11;
+  var totprice11 = qnty11 * price11
+
+  document.getElementById("inputprice11").value = totprice11;
+
+  var price12 = document.getElementById("inputunitprice12").innerHTML;
+    price12 = price12.substring(1);
+    price12 = parseFloat(price12);  
+
+  var qnty12 = parseFloat(document.getElementById("inputqnty12").value);
+    qnty12 = isNaN(qnty12)?0:qnty12;
+
+  var totprice12  = qnty12 * price12;
+  document.getElementById("inputprice12").value = totprice12;
+  var subtotal1 = totprice11 + totprice12;
+  document.getElementById("inputsubtotal1").value  = subtotal1;
+
+  /*---------------*/
+  var price21 = document.getElementById("inputunitprice21").innerHTML;
+    price21 = price21.substring(1);
+    price21 = parseFloat(price21);  
+
+  var qnty21 = parseFloat(document.getElementById("inputqnty21").value);
+    qnty21 = isNaN(qnty21)?0:qnty21;
+  var totprice21 = qnty21 * price21
+
+  document.getElementById("inputprice21").value = totprice21;
+
+  var price22 = document.getElementById("inputunitprice22").innerHTML;
+    price22 = price22.substring(1);
+    price22 = parseFloat(price22);  
+
+  var qnty22 = parseFloat(document.getElementById("inputqnty22").value);
+    qnty22 = isNaN(qnty22)?0:qnty22;
+
+  var totprice22  = qnty22 * price22;
+  document.getElementById("inputprice22").value = totprice22;
+  var subtota21 = totprice21 + totprice22;
+  document.getElementById("inputsubtotal2").value  = subtota21;
+
+  /*--------------------*/
+  var price31 = document.getElementById("inputunitprice31").innerHTML;
+    price31 = price31.substring(1);
+    price31 = parseFloat(price31);  
+
+  var qnty31 = parseFloat(document.getElementById("inputqnty31").value);
+    qnty31 = isNaN(qnty31)?0:qnty31;
+  var totprice31 = qnty31 * price31
+
+  document.getElementById("inputprice31").value = totprice31;
+
+  var price32 = document.getElementById("inputunitprice32").innerHTML;
+    price32 = price32.substring(1);
+    price32 = parseFloat(price32);  
+
+  var qnty32 = parseFloat(document.getElementById("inputqnty32").value);
+    qnty32 = isNaN(qnty32)?0:qnty32;
+
+  var totprice32  = qnty32 * price32;
+  document.getElementById("inputprice32").value = totprice32;
+  var subtota31 = totprice31 + totprice32;
+  document.getElementById("inputsubtotal3").value  = subtota31;
+
+  var total =subtotal1+subtota21+subtota31;
+  document.getElementById("inputtotal").value = total;
+
+  var salesTax =(total*8.5)/100;
+  document.getElementById("inputsalesTax").value =salesTax;
+  var afterSalesTax = total+salesTax;
+  document.getElementById("inputtotalwithtax").value =afterSalesTax;
+
+  var shipping =0;
+
+  if(afterSalesTax>0)
+    shipping =100;
+
+  document.getElementById("inputshipping").value=shipping;
+  
+  document.getElementById("inputgrandTotal").value=shipping+afterSalesTax;
+
+}
+
+  </script>
+</head>
+<body>
+	<!-- ==============================navigation :starts =============================================== -->	
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand logo" href="#">DS Interior, INC. </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+         <li ><a  href="index.html">Home</a></li>
+        <li ><a  href="whatsnew.html">What's New</a></li>
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Work <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="projects.html">Projects</a></li>
+             <li><a href="catalog.html">Explore By Room</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Service <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="services.html">Customer Service</a></li>
+            <li><a href="faqs.html">Faqs</a></li>
+          </ul>
+        </li>
+       
+         <li><a href="order.html">Order</a></li>
+       
+        <li class="dropdown" class="active">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="contact-us.html">Contact Us</a></li>
+            <li><a href="employment.html">Employment</a></li>
+            <li ><a href="about-us.html">About Us</a></li>
+       
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- ==============================navigation :end =============================================== -->
+
+<!-- ==============================about us :start =============================================== -->
+<div class="container top text-center">
+	<div class="row"> 
+	<div class="col-xs-12 ">
+		<h1 class="border">Purchases furniture and decor for your home</h1>
+			<div class="text-left">
+      <div class="col-xs-5"> <!-- customer info -->
+        <form class="form-horizontal" action="http://voyager.deanza.edu/~hso/cgi-bin/form420.cgi" method="POST" onsubmit="return validate(this)" >
+          <input type="hidden" name="myemail" id="myemail" value="suryawanshdipal643@students.itu.edu"/>
+
+          <!-- first name -->
+          <div class="form-group">
+             <label for="exampleInputFirstName" class="col-sm-4 control-label">First Name</label>
+             <div class="col-sm-8">
+                <input type="text" class="form-control" id="inputFirstName" name="first" placeholder="First Name" maxlength="20">
+             </div>
+          </div>
+          <!-- last name-->
+          <div class="form-group">
+             <label for="exampleInputLastName" class="col-sm-4 control-label">Last Name</label>
+             <div class="col-sm-8">
+                <input type="text" class="form-control" id="inputLastName" name="last" placeholder="Last Name">
+             </div>
+          </div>
+          <!-- Street address -->
+          <div class="form-group">
+             <label for="exampleInputAddress" class="col-sm-4 control-label">Street Address</label>
+             <div class="col-sm-8">
+                <input type="text" class="form-control" id="inputAddress" name="address" placeholder="Street Address">
+             </div>
+          </div>
+          <!-- City -->
+          <div class="form-group">
+             <label for="exampleInputCity" class="col-sm-4 control-label">City</label>
+             <div class="col-sm-8">
+                <input type="text" class="form-control" id="inputCity" name="city" placeholder="City">
+             </div>
+          </div>
+                    
+          <!-- State -->
+          <div class="form-group">
+             <label for="exampleInputState" class="col-sm-4 control-label">State</label>
+             <div class="col-sm-8">
+                <input type="text" class="form-control" id="inputState" name="state" placeholder="State">
+             </div>
+          </div>
+          <!-- Zip -->
+          <div class="form-group">
+             <label for="exampleInputZip" class="col-sm-4 control-label">Zip</label>
+             <div class="col-sm-8">
+                <input type="text" class="form-control" id="inputZip" name="zip" placeholder="Zip">
+             </div>
+          </div>
+          <!-- phone -->
+          <div class="form-group">
+             <label for="exampleInputPhone" class="col-sm-4 control-label">Phone Number</label>
+             <div class="col-sm-8">
+                <input type="text" class="form-control" id="inputPhone" name="phone" placeholder="(xxx) xxx-xxxx">
+             </div>
+          </div>
+          <!-- Email -->
+          <div class="form-group">
+             <label for="exampleInputEmail" class="col-sm-4 control-label">Email</label>
+             <div class="col-sm-8">
+                <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email">
+             </div>
+          </div>
+          <!-- Credit Card Number -->
+          <div class="form-group">
+             <label for="exampleInputccnum" class="col-sm-4 control-label">Credit Card Number</label>
+             <div class="col-sm-8">
+                <input type="text" class="form-control" id="inputccnum" name="ccnum" placeholder="Credit Card Number">
+             </div>
+          </div>
+          <!-- Credit card type -->
+          <div class="form-group">
+             <label for="exampleInputcctype" class="col-sm-4 control-label">Credit Card Type</label>
+             <div class="col-sm-8">
+                <select class="form-control" name="cctype" id="inputcctype">
+                      <option value="">Select</option>
+                      <option value="American Express">American Express</option>
+                      <option value="Discover">Discover</option>
+                      <option value="MasterCard">MasterCard</option>
+                      <option value="Visa">Visa</option>
+                    </select>
+             </div>
+          </div>
+          <!-- Credit Card Expiration date -->
+          <div class="form-group">
+             <label for="exampleInputccexpire" class="col-sm-4 control-label">Credit Card Expiration Date</label>
+             <div class="col-sm-8">
+                <input type="text" class="form-control" id="inputccexpire" name="ccexpire" placeholder="mm/yyyy">
+             </div>
+          </div>
+          <!-- Comment -->
+          <div class="form-group">
+             <label for="exampleInputcomment" class="col-sm-4 control-label">Comment</label>
+             <div class="col-sm-8">
+                <textarea class="form-control" id="inputComment" name="comment" rows="3"></textarea>
+             </div>
+          </div>
+
+          </div> <!-- close customer info -->
+          <div  class="col-xs-7">
+              <table class="table table-bordered">
+              <thead>
+                <tr style="font-weight:bold">
+                  <td>Category</td>
+                  <td>Description</td>
+                  <td>Unit Price</td>
+                  <td>Quantity</td>
+                  <td>Total Price</td>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- category 1-->
+                <tr>
+                  <td rowspan="2">Accessories</td>
+                  <td>Darkly Mirror</td>
+                  <td id="inputunitprice11">$10</td>
+                  <td><input type="text" class="form-control qnty" id="inputqnty11" name="qnty11" onkeyup="update()" ></td>
+                  <td><input type="text" class="form-control price" id="inputprice11" name="price11" ></td>
+                </tr>
+
+                <tr>
+                  <td>Wall Clock</td>
+                  <td id="inputunitprice12">$30</td>
+                  <td><input type="text" class="form-control qnty" id="inputqnty12" name="qnty12" onkeyup="update()" ></td>
+                  <td><input type="text" class="form-control price" id="inputprice12" name="price12" ></td>
+                </tr>
+                <tr>
+                  <td colspan="4" class="text-right">Subtotal $</td>
+                  <td><input type="text" class="form-control price" id="inputsubtotal1" name="subtotal1" ></td>
+                </tr>  
+                <!-- cateogry 2 -->
+                <tr>
+                  <td rowspan="2">Lighting</td>
+                  <td>Table lights</td>
+                  <td id="inputunitprice21">$10</td>
+                  <td><input type="text" class="form-control qnty" id="inputqnty21" name="qnty21" onkeyup="update()" ></td>
+                  <td><input type="text" class="form-control price" id="inputprice21" name="price21" ></td>
+                </tr>
+
+                <tr>
+                  <td>Floor lights</td>
+                  <td id="inputunitprice22">$20</td>
+                  <td><input type="text" class="form-control qnty" id="inputqnty22" name="qnty22" onkeyup="update()" ></td>
+                  <td><input type="text" class="form-control price" id="inputprice22" name="price22" ></td>
+                </tr>
+                <tr>
+                  <td colspan="4" class="text-right">Subtotal $</td>
+                  <td><input type="text" class="form-control price" id="inputsubtotal2" name="subtotal2" ></td>
+                </tr>  
+                  <!-- catefory 3-->
+                  <tr>
+                  <td rowspan="2">Flooring</td>
+                  <td >Floor tiles</td>
+                  <td id="inputunitprice31">$60</td>
+                  <td><input type="text" class="form-control qnty" id="inputqnty31" name="qnty31" onkeyup="update()" ></td>
+                  <td><input type="text" class="form-control price" id="inputprice31" name="price31" ></td>
+                </tr>
+
+                <tr>
+                  <td>Floor panels</td>
+                  <td id="inputunitprice32">$90</td>
+                  <td><input type="text" class="form-control qnty" id="inputqnty32" name="qnty32" onkeyup="update()" ></td>
+                  <td><input type="text" class="form-control price" id="inputprice32" name="price32" ></td>
+                </tr>
+                <tr>
+                  <td colspan="4" class="text-right">Subtotal $</td>
+                  <td><input type="text" class="form-control price" id="inputsubtotal3" name="subtotal3" ></td>
+                </tr>  
+                <!-- total-->
+                <tr>
+                  <td colspan="4" class="text-right">Total $</td>
+                  <td><input type="text" class="form-control price" id="inputtotal" name="total" ></td>
+                </tr>  
+                <!--sales tax(8.25%)-->
+                <tr>
+                  <td colspan="4" class="text-right">Sales Tax (8.25%) $</td>
+                  <td><input type="text" class="form-control price" id="inputsalesTax" name="salesTax" ></td>
+                </tr> 
+                 <!-- total after sales tax-->
+                <tr>
+                  <td colspan="4" class="text-right">Total $</td>
+                  <td><input type="text" class="form-control price" id="inputtotalwithtax" name="totalwithtax" ></td>
+                </tr>
+                <tr>
+                  <td colspan="4" class="text-right">Shipping and Handling $  </td>
+                  <td><input type="text" class="form-control price" id="inputshipping" name="inputshipping" ></td>
+                </tr>  
+                <!--Grand Total -->
+                <tr>
+                  <td colspan="4" class="text-right">Grand Total $</td>
+                  <td><input type="text" class="form-control price" id="inputgrandTotal" name="grandTotal" ></td>
+                </tr> 
+
+              </tbody>
+              </table>
+              
+              <div class="row" style="margin-bottom:15px">
+                <!-- Buttons-->
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <button type="submit" class="btn btn-default" >Submit</button>
+                  <button type="rest" class="btn btn-default">Reset</button>
+                </div>
+              </div>
+   
+              </div>
+             
+          </div>
+
+          
+        </form>   
+      </div>
+  </div>
+		
+		
+	</div>
+</div>
+<!-- ==============================about us :end =============================================== -->
+
+<footer class=" text-center">
+<div class="container">
+ <span style="float:left">Website Developed by Dipali</span>  
+  <span style="float:right">
+  	<i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i>
+  	<i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
+<i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
+  </span>	
+</div>
+ 
+</footer>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>

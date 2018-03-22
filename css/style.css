@@ -1,0 +1,202 @@
+body{
+	margin:0;
+	padding:0;
+	font-family: 'Open Sans', sans-serif;
+}
+/*=================================header======================*/
+/*logo*/
+/*.logo{
+	background:url("../img/Capture.png");
+	width: 450px;
+	background-position: center;
+}*/
+.logo{
+	text-transform: uppercase;
+   font-family: 'Berkshire Swash', cursive;
+
+}
+.navbar-brand{
+	font-size: 35px;
+}
+.nav {
+	font-size: 18px;
+	font-weight: bold;
+}
+.navbar-default{
+	background-color: #fff;
+}
+.bg{
+	background-image: url("../img/BFA15_Thomas.jpg");
+}
+
+.navbar {
+  min-height: 80px;
+}
+
+.navbar-brand {
+  padding: 0 15px;
+  height: 80px;
+  line-height: 80px;
+}
+.dropdown-menu li{
+  line-height: 50px;
+  color: #555;
+    font-size: 16px;
+}
+.dropdown-menu li a{
+  padding: 20px 20px;
+}
+.navbar-toggle {
+  /* (80px - button height 34px) / 2 = 23px */
+  margin-top: 23px;
+  padding: 9px 10px !important;
+}
+.top{
+	margin-top: 80px;
+}
+/*change heading*/
+.heading{
+	margin:25px 0;
+}
+p, ul{
+	font-family: 'PT Serif', serif;
+	font-size: 16px;
+
+}
+.about{
+	margin-bottom: 20px;
+}
+/*=================================TESTIMONIAL ============================*/
+.testi{
+
+}
+		p.content {
+    font-style: italic;
+    padding-left: 19px;
+    position: relative;
+    overflow: hidden;
+    font-size: 22px;
+    text-align: center;
+}
+p.content span.laquo {
+    background: url(../img/laquo.png) no-repeat;
+    width: 14px;
+    height: 11px;
+    position: absolute;
+    left: 0;
+    top: 4px;
+    display: block;
+}
+
+ p.content span.raquo {
+    background: url(../img/raquo.png) no-repeat right 4px;
+    width: 13px;
+    height: 15px;
+    padding-left: 4px;
+    display: inline-block;
+}
+
+.sign {
+    text-align: center;
+    font-size: 18px;
+}
+.testtmonial-container{
+	margin-bottom: 20px;
+}
+footer{
+	background-color: #1C1C1C;
+	color: #F9FDFB;
+	padding: 25px;
+}
+.right{
+	text-align: right;
+}
+/*==================================about us page ==================*/
+.border{
+	/*border-bottom: 1px solid #727272;*/
+}
+.border {
+	text-transform: uppercase !important;
+	font-weight: bold;
+	margin:40px 0;
+}
+.border:after {
+    width: 100px;
+    height: 2px;
+    background-color: #4676c9;
+    display: block;
+    content: " ";
+    margin: 0 auto;
+    margin-top: 10px;
+}
+/*=============================contact us===============*/
+.bg-career{
+	background-color: #4676c9;
+	color: white;
+	text-align: center;
+	    display: flex;
+    align-items: center;
+    height: 315px;
+    justify-content: center;
+}
+.bg-career a{
+  color: white;
+  font-size: 23px;
+  text-decoration: underline;
+}
+.size{
+	height: 315px;
+	width: 100%;
+}
+.vertical-align {
+  display: flex;
+}
+.grey{
+	background-color: grey;
+}
+.nopadding{
+padding: 0;
+}
+/*=======================================faqs=================*/
+.line-h {
+    line-height:20px;
+    padding-top: 25px;
+}
+
+.tab-content{
+	font-size: 16px;
+}
+.head-primary{
+  background-color: #dff0d8;
+}
+#greet{
+  text-align: center;
+}
+.qnty{
+  width: 80px;
+}
+.price{
+  width: 200px;
+}
+/*
+.vertical-align > [class^="col-"],
+.vertical-align > [class*=" col-"] {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Optional, to align inner items 
+                              horizontally inside the column */
+/*}
+.vertical-align > [class^="col-"] > div,
+.vertical-align > [class*=" col-"] > div {
+  /* flex: 1; */
+ /* flex-grow: 1;
+}*/
+/*====================menu=======================*/
+@media (min-width: 768px) {
+  .navbar-nav > li > a {
+    /* (80px - line-height of 27px) / 2 = 26.5px */
+    padding-top: 26.5px;
+    padding-bottom: 26.5px;
+    line-height: 27px;
+  }
+}

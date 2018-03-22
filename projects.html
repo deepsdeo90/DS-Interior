@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+	<!-- controls the page's dimention -->   
+    <meta name="viewport" content="width=device-width">
+
+	<title>DS Interior Inc.</title>
+
+	<!-- bootratp cdn-->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- font awsome-->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Open+Sans|PT+Serif" rel="stylesheet">
+
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<style type="text/css">
+]	</style>
+</head>
+<body>
+	<!-- ==============================navigation :starts =============================================== -->	
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand logo" href="#">DS Interior, INC. </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+         <li ><a  href="index.html">Home</a></li>
+        <li ><a  href="whatsnew.html">What's New</a></li>
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Work <span class="caret"></span></a>
+        	<ul class="dropdown-menu">
+        		<li class="active"><a href="projects.html">Projects</a></li>
+        		 <li><a href="catalog.html">Explore By Room</a></li>
+        	</ul>
+        </li>
+
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Service <span class="caret"></span></a>
+        	<ul class="dropdown-menu">
+        		<li><a href="services.html">Customer Service</a></li>
+        		<li><a href="faqs.html">Faqs</a></li>
+        	</ul>
+        </li>
+       <li><a href="order.html">Order</a></li>
+      
+        
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact <span class="caret"></span></a>
+        	<ul class="dropdown-menu">
+        		<li><a href="contact-us.html">Contact Us</a></li>
+        		<li><a href="employment.html">Employment</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+             
+        	</ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- ==============================navigation :end =============================================== -->
+<!-- =====================Recent Projects ============= -->
+<div class="container top">
+	<h2 class="heading">Recent Projects</h2>
+	<div class="row">
+	<script type="text/javascript">
+	<!-- HIDE FROM OTHER BROWSERS
+
+	/*Using the constructor function and the this keyword, create a project object
+	Arguments: name, image, description
+	*/
+    function Project(name, img, desc){
+            this.name = name;
+            this.img = img
+            this.desc = desc;
+           /*Include a method to display the properties.*/
+            this.show = function(){
+            	document.write("<div class='col-xs-12 '>");
+            	document.write("<a href='#' class='thumbnail'>");
+                document.write("<img class='img-responsive' src='img/"+img+"' alt='' >");
+                document.write("</a>");
+                document.write("<div class='caption'>");
+                document.write("<h3>"+name+"</h3>");
+                document.write("<p>"+desc+"</p>");
+                document.write("</div>");
+                document.write("</div>");
+            };
+        }
+
+    function func1(){
+    	project1 = new Project("Kitchen Remodeling", "KitchenandBath.jpg", "For a occupied house a built in kitchen is a unique solution that will offer you fantastic operation and streamline the area to help make the almost all of every inch. If you are with limited funds consider revamping kitchen units or buying some new kitchen worktops to renew the style and add many years of service to the busiest room inside your home.");
+		project1.show();
+	}   
+	function func2(){
+    	project2 = new Project("Granite, Marble and Tile Selection and Design", "floors.jpg", "Then not only from the proper execution alone, but can also be observed from the problem of the existing prices Countless surfaces are extremely assorted. But not some individuals who don't realize how to look for the type and theme of ceramics for his or her homes.");
+		project2.show();
+	}   
+	function func3(){
+    	project3 = new Project("Marvelous Bedrooms", "marvelous-bedrooms.jpg", "Whether you imagine a quiet and restful sanctuary or a lavish hotel-style bedroom, our gallery of bedroom ideas has professional advice on all you need to learn before you make a start, from locating the perfect bed to choosing a bedroom colour pallette. Enhance the ambiance and atmosphere with a carefully considered bedroom lamps structure; make sure each aspect of the foundation has task lamps for an area of bedtime reading and go with the design of the area with a assertion over head light or pendan.");
+		project3.show();
+	}   
+	function func4(){
+    	project4 = new Project("Custom Furnishing and Accessories", "architecture-furniture.jpg", "Making a desired home design requires some interesting design things to consider as well as relative to the cost that is ready. Architectural design establishes the results of your house construction. Contemporary structures, Modern homes, Modern architecture, Modern-day houses, Modern modern day house, Modern external, every depiction of every room design to its size must be clear.");
+		project4.show();
+	}  
+	function errMessage(){
+		document.write("<div class='alert alert-danger' role='alert'>Error in input!! <br> Please enter correct project number.</div>");
+
+	}
+    function selectProduct(){
+			var first = prompt("Please enter your first name","John");
+
+		var last = prompt("Please enter your last name","Michael");
+			alert("Welcome "+first+" "+last+" to projects page!!");
+			var last = prompt("Please enter project number between 1 to 4","project1");
+			last= last.toLowerCase();
+			if(last==1 || last==="project1"){
+				func1();
+			}
+			else if(last==2 || last=="project2"){
+				func2();
+			}
+			else if(last==3 || last=="project3"){
+				func3();
+			}
+			else if(last==4 || last=="project4"){
+				func4();
+			}
+			else{
+				errMessage();
+			}
+
+	}
+	selectProduct();
+// STOP HIDING FROM OTHER BROWSERS -->
+  </script>
+    </div>
+    
+</div>
+
+
+<footer class=" text-center">
+<div class="container">
+ <span style="float:left">Website Developed by Dipali</span>  
+  <span style="float:right">
+  	<i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i>
+  	<i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
+<i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
+
+
+  </span>	
+</div>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</footer>
+</body>
+</html>
